@@ -1,10 +1,8 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 Deck deck = new Deck(); // creates new Deck 
-Scanner reader = new Scanner(System.in); // creates new Scanner
 ArrayList<Card> you = new ArrayList<Card>(); // creates ArrayList of cards for player
 ArrayList<Card> dealer = new ArrayList<Card>(); // creates ArrayList of cards for dealer
-boolean hitdelay = true;
+boolean hitdelay = true; 
 int cardnumber = 4;
 boolean game = true;
 int win = 0;
@@ -39,11 +37,15 @@ void draw() {
     }
   }
   if (getScore(dealer)<17) {
-    hitdealer(deck, dealer, cardnumber);
+    hitdealer(deck, dealer);
     if (getScore(dealer)>=21) {
       result(getScore(you), getScore(dealer));
       ending(dealer, you);
     }
+  }
+  if (getScore(you)>=21 && game == true) {
+    result(getScore(you), getScore(dealer));
+      ending(dealer, you);
   }
   if (game == false && mousePressed==true && hitdelay == true 
     && mouseX>550&&mouseY<50) {
@@ -53,12 +55,9 @@ void draw() {
   if (game == true && mousePressed==true && hitdelay == true 
     && mouseX>255-60 && mouseX<225+60 && mouseY>200-25 && mouseY<200+25) {
     hitdelay=false;
-    hit(deck, dealer, you, cardnumber);
-    if (getScore(you)>=21) {
-      result(getScore(you), getScore(dealer));
-      ending(dealer, you);
-    }
+    hit(deck, you);
   }
+    
   if (game == true && mousePressed == true && hitdelay == true 
     && mouseX>422-60 && mouseX<422+60 && mouseY>200-25 && mouseY<200+25) {
     result(getScore(you), getScore(dealer));
@@ -69,14 +68,15 @@ void mouseReleased() {
   hitdelay = true;
 }
 
-void hitdealer(Deck deck, ArrayList<Card> d, int i) {
+void hitdealer(Deck deck, ArrayList<Card> d) {
   if (getScore(d)<17) {
-    d.add(deck.dealCard(i));
+    d.add(deck.dealCard(cardnumber));
+    cardnumber++;
   }
 }
-void hit(Deck deck, ArrayList<Card> d, ArrayList<Card> y, int i) {
+void hit(Deck deck, ArrayList<Card> y) {
   if (getScore(y) < 22) {
-    y.add(deck.dealCard(i));
+    y.add(deck.dealCard(cardnumber));
     cardnumber++;
   }
 }
