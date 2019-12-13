@@ -19,7 +19,6 @@ public class Deck {
       temp = cards[a];
       cards[a] = cards[b];
       cards[b] = temp;
-
     }
   }
 
