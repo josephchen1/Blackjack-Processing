@@ -2,7 +2,7 @@
 Simply the traditional, iconic casino game ‘Blackjack,’ but on Processing. 
 
 # Motivation
-Just a project for CSC506: Network & Mobile Architecture to warm-up and review Java.
+Just a little assignment for CSC506: Network & Mobile Architecture to warm-up and review Java.
 
 # Getting Started
 You would need Processing 3.5.3 or higher, although older versions should usually work.
